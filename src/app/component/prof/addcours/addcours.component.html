@@ -1,0 +1,54 @@
+<form [formGroup]="formCours" (ngSubmit)="onSubmit()">
+    <!-- 2 column grid layout with text inputs for the first and last names -->
+    <div class="row mb-4">
+      <div class="col">
+        <div data-mdb-input-init class="form-outline">
+        <label class="form-label" for="form6Example1">title</label>
+          <input type="text" id="form6Example1" class="form-control" formControlName="title"
+          [ngClass]="{'is-invalid':f['title'].errors}"
+          placeholder="title">
+          <div *ngIf="f['title'].errors">
+            <div *ngIf="f['title'].errors['required']">
+              title required
+            </div></div>
+          
+        </div>
+      </div>
+      <div class="col">
+        
+            <label class="form-label" for="customFile">Cours image</label>
+            <input type="file" class="form-control" id="customFile" formControlName="image" (change)="handelFileInput($event)"/>
+        
+      </div>
+    </div>
+    <div data-mdb-input-init class="form-outline mb-4">
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Example select</label>
+        <select class="form-control" id="exampleFormControlSelect1" formControlName="id_category">
+          <option  *ngFor="let c of categorie" [value]="c.id">{{c.label}}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Message input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+      <label class="form-label" for="form6Example7">Description of  cours</label>
+      <textarea class="form-control" id="form6Example7" rows="4"formControlName="course_description"
+      [ngClass]="{'is-invalid':f['course_description'].errors}"
+      placeholder="course_description">
+      <div *ngIf="f['course_description'].errors">
+        <div *ngIf="f['course_description'].errors['required']">
+          description required
+        </div></div></textarea>
+      
+    </div>
+  
+  
+    <!-- Submit button -->
+    <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4" (click)="onSubmit()">Add Cours</button>
+  </form>
+  <script>
+    // Initialization for ES Users
+    import { Input, Ripple, initMDB } from "mdb-ui-kit";
+    initMDB({ Input, Ripple });
+  </script>

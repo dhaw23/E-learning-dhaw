@@ -1,0 +1,30 @@
+ <!-- Owned Tab -->
+ <div class="tab-pane fade show in active" id="owned" role="tabpanel">
+    <h3 class="course-title">Cours List</h3>
+    <table class="table table-bordered" >
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Cours Name</th>
+            <th scope="col">Action</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+            
+            <tr *ngFor="let v of cours | paginate: { itemsPerPage: 6, currentPage: p }">
+                <td>{{v.idCourse}}</td>
+                <td>{{v.title}}</td>
+                <td>
+                  <span class="glyphicon glyphicon-remove-sign" (click)="deleteCours(v.idCourse)"></span>
+                  <span class="glyphicon glyphicon-pencil" routerLink="/homeuser/categories/updatecategorie/{{v.idCourse}}"></span>
+                </td>
+            </tr>
+          
+        </tbody>
+      </table>
+      <div class="pagination-box-row">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+     </div>
+</div>
+<!-- Owned Tab -->

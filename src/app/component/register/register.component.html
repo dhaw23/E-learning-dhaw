@@ -1,0 +1,49 @@
+<div class="background">
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 form-container">
+        <form id="registerForm" [formGroup]="formUser" (ngSubmit)="onSubmit()">
+          <h2>Register</h2>
+          <div class="form-group">
+            <label for="registerName">Full Name</label>
+            <input type="text" class="form-control" id="registerName" placeholder="Enter your full name" formControlName="username" 
+            [ngClass]="{'is-invalid':f['username'].errors}"
+            placeholder="Full name">
+            <div *ngIf="f['username'].errors">
+                  <div *ngIf="f['username'].errors['required']">
+                        user name required
+                  </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="registerEmail">Email address</label>
+            <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp" placeholder="Enter email" formControlName="email"
+            [ngClass]="{'is-invalid':f['email'].errors}"
+            placeholder="Email Address">
+            <div *ngIf="f['email'].errors">
+              <div *ngIf="f['email'].errors['required']">
+                    email required
+              </div></div>
+          </div>
+          <div class="form-group">
+            <label for="registerPassword">Password</label>
+            <input type="password" class="form-control" id="registerPassword" placeholder="Password" formControlName="password" 
+            [ngClass]="{'is-invalid':f['password'].errors}"
+            placeholder="Password">
+            <div *ngIf="f['password'].errors">
+              <div *ngIf="f['password'].errors['required']">
+                  password required
+              </div></div>
+          </div>
+          <button type="submit" class="btn btn-success">Register</button>
+        </form>
+        <div class="already-account">
+            <p>Already have an account? <a routerLink="/login">Login here</a></p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
